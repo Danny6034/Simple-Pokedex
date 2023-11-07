@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>POKEDEX</title>
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body>
+    <!-- Container de Search -->
+    <div id="container">
+      <h1>Danny's Pokedex</h1>
+      <div id="input-container">
+        <input type="text" id="name-input" placeholder="Enter Pokemon name">
+        <button id="search-btn">Search</button>
+        <button id="add-btn">Add To Pokedex</button>
+      </div>
+      <!-- Pokemon attributes table -->
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Weight</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+      </table>
+      <div id="update-container">
+        <input type="text" id="update-name-input">
+        <input type="text" id="update-email-input">
+        <button id="update-btn">Update</button>
+        <button id="cancel-btn">Cancel</button>
+      </div>
+      <div>
+        <img id="sprite-img">
+      </div>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
