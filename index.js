@@ -17,22 +17,24 @@ function renderTable() {
     const idTd = document.createElement("td");
     const nameTd = document.createElement("td");
     const weightTd = document.createElement("td");
+    const sprite = document.createElement("img")
     const actionsTd = document.createElement("td");
     const deleteBtn = document.createElement("button");
     deleteBtn.className = "delete-btn";
     idTd.innerText = pokemon.id;
     nameTd.innerText = pokemon.name;
     weightTd.innerText = pokemon.weight;
+    sprite.src = pokemon.sprite;
     deleteBtn.innerText = "Delete";
     deleteBtn.addEventListener("click", () => {
       deletePokemon(pokemon.id);
     });
-    actionsTd.appendChild(editBtn);
     actionsTd.appendChild(deleteBtn);
     tr.appendChild(idTd);
     tr.appendChild(nameTd);
     tr.appendChild(weightTd);
     tr.appendChild(actionsTd);
+    tr.appendChild(sprite)
     tableBody.appendChild(tr);
   }
 }
