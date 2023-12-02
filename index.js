@@ -61,18 +61,25 @@ async function addPokemon() {
   let pokemondata = await searchPokemon();
   console.log(pokemondata.weight)
   const name = nameInput.value.trim();
-    if(name != null){
+  let result = pokemons.find(obj => obj.name === name)
 
-      const pokemon = {
-        id: pokemondata.id,
-        name: pokemondata.name,
-        weight: pokemondata.weight,
-        sprite: pokemondata.sprites.front_default,
-      };
-      pokemons.push(pokemon);
-      localStorage.setItem("pokemons", JSON.stringify(pokemons));
-      nameInput.value = "";
-      renderTable();
+
+  console.log(result);
+  //Check name is not null and Pokemon is not already stored.
+    if(name != null){
+      if (result == undefined) {
+        const pokemon = {
+          id: pokemondata.id,
+          name: pokemondata.name,
+          weight: pokemondata.weight,
+          sprite: pokemondata.sprites.front_default,
+        };
+        pokemons.push(pokemon);
+        localStorage.setItem("pokemons", JSON.stringify(pokemons));
+        nameInput.value = "";
+        renderTable();
+      }
+
   }
   else{
     alert("Invalid Pokemon name!");
@@ -83,9 +90,6 @@ async function addPokemon() {
 function deletePokemon(pokemonId) {
   pokemons = pokemons.filter((pokemon) => pokemon.id !== pokemonId);
   localStorage.setItem("pokemons", JSON.stringify(pokemons));
-  if (pokemons.length == 0){
-    hideUpdateForm();
-  };
   renderTable();
 }
 
