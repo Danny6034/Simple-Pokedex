@@ -44,6 +44,11 @@ async function searchPokemon() {
   let url = 'https://pokeapi.co/api/v2/pokemon/' + name + '/';
 
   let response = await fetch(url);
+  if (response.status == 404) {
+    alert("Pokemon name is invalid");
+    return response.status;
+  }
+
   let data = await response.json()
   console.log(typeof data)
 
@@ -59,6 +64,12 @@ searchPokemon().then(data => console.log(data));
 async function addPokemon() {
 
   let pokemondata = await searchPokemon();
+
+  if (pokemondata == 404) {
+    //No need to alert again
+    return pokemondata;
+  }
+
   console.log(pokemondata.weight)
   const name = nameInput.value.trim();
   let result = pokemons.find(obj => obj.name === name)
