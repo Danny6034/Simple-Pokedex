@@ -16,6 +16,7 @@ function renderTable() {
     const tr = document.createElement("tr");
     const idTd = document.createElement("td");
     const nameTd = document.createElement("td");
+    const typeTd = document.createElement("td");
     const weightTd = document.createElement("td");
     const sprite = document.createElement("img")
     const actionsTd = document.createElement("td");
@@ -23,6 +24,7 @@ function renderTable() {
     deleteBtn.className = "delete-btn";
     idTd.innerText = pokemon.id;
     nameTd.innerText = pokemon.name;
+    typeTd.innerText = pokemon.type;
     weightTd.innerText = pokemon.weight;
     sprite.src = pokemon.sprite;
     deleteBtn.innerText = "Delete";
@@ -32,6 +34,7 @@ function renderTable() {
     actionsTd.appendChild(deleteBtn);
     tr.appendChild(idTd);
     tr.appendChild(nameTd);
+    tr.appendChild(typeTd);
     tr.appendChild(weightTd);
     tr.appendChild(actionsTd);
     tr.appendChild(sprite)
@@ -82,10 +85,12 @@ async function addPokemon() {
         const pokemon = {
           id: pokemondata.id,
           name: pokemondata.name,
+          type: pokemondata.types[0].type.name,
           weight: pokemondata.weight,
           sprite: pokemondata.sprites.front_default,
         };
         pokemons.push(pokemon);
+        console.log(pokemon.type)
         localStorage.setItem("pokemons", JSON.stringify(pokemons));
         nameInput.value = "";
         renderTable();
